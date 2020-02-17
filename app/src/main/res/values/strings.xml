@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">AICTE_Activity</string>
+    <string name="member_field"> Member name </string>
+    <string name="member_age"> age </string>
+    <string name="member_phone"> Phone number</string>
+    <string name="member_occupation"> occupation </string>
+    <string name="member_cards"> Cards available </string>
+    <string name="member_aadhar"> Aadhar card </string>
+    <string name="member_driving"> Driving Licence </string>
+    <string name="member_birth"> Birth Certificate </string>
+    <string name="member_marriage"> Marriage Certificate </string>
+    <string name="member_ayushman"> Ayushman card </string>
+    <string name="member_bank"> Bank Account </string>
+    <string name="meber_gender_text"> Gender </string>
+
+    <string name="member_reset"> RESET </string>
+    <string name="member_submit"> SUBMIT </string>
+
+    <string name="new_member"> MEMBER </string>
+    <string name="new_family"> FAMILY </string>
+    <string name="title_activity_member_list">MemberList</string>
+</resources>

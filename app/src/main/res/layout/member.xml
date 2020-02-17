@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Member">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/heading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="0sp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:background="@android:color/holo_orange_light"
+            android:gravity="center_vertical|center_horizontal"
+            android:padding="5sp"
+            android:text="MEMBER"
+            android:textColor="@android:color/holo_red_dark"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="16dp" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <EditText
+                            android:id="@+id/member_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="5sp"
+                            android:editable="true"
+                            android:hint="@string/member_field"
+                            android:padding="5sp"
+                            android:textColorHint="@android:color/darker_gray"
+                            android:textSize="20dp" />
+
+                        <TextView
+                            android:id="@+id/member_gender_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="5sp"
+                            android:text="@string/meber_gender_text"
+                            android:textSize="20sp" />
+
+                        <RadioGroup
+                            android:id="@+id/member_gender"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="5sp"
+                            android:gravity="center">
+
+
+                            <RadioButton
+                                android:id="@+id/gender_male"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="left"
+                                android:layout_weight="1"
+                                android:text="Male" />
+
+                            <RadioButton
+                                android:id="@+id/gender_female"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="left"
+                                android:layout_weight="1"
+                                android:text="female" />
+
+                            <RadioButton
+                                android:id="@+id/gender_others"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="left"
+                                android:layout_weight="1"
+                                android:text="Others" />
+
+                        </RadioGroup>
+
+                        <EditText
+                            android:id="@+id/member_age"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="5sp"
+                            android:editable="true"
+                            android:hint="@string/member_age"
+                            android:inputType="number"
+                            android:padding="5sp"
+                            android:textColorHint="@android:color/darker_gray"
+                            android:textSize="20dp" />
+
+                        <EditText
+                            android:id="@+id/member_phone"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="5sp"
+                            android:editable="true"
+                            android:hint="@string/member_phone"
+                            android:padding="5sp"
+                            android:phoneNumber="true"
+                            android:textColorHint="@android:color/darker_gray"
+                            android:textSize="20dp" />
+
+                        <EditText
+                            android:id="@+id/member_occupation"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="5sp"
+                            android:editable="true"
+                            android:hint="@string/member_occupation"
+                            android:padding="5sp"
+                            android:textColorHint="@android:color/darker_gray"
+                            android:textSize="20dp" />
+
+                        <TextView
+                            android:id="@+id/member_cards"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="5sp"
+                            android:padding="5sp"
+                            android:text="@string/member_cards"
+                            android:textColor="@android:color/holo_red_dark"
+                            android:textSize="20dp" />
+
+                        <CheckBox
+                            android:id="@+id/member_aadhar"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5sp"
+                            android:padding="5sp"
+                            android:text="@string/member_aadhar"
+                            android:textColorHighlight="@android:color/holo_red_dark" />
+
+                        <CheckBox
+                            android:id="@+id/member_driving"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5sp"
+                            android:padding="5sp"
+                            android:text="@string/member_driving"
+                            android:textColorHighlight="@android:color/holo_red_dark" />
+
+                        <CheckBox
+                            android:id="@+id/member_birth"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5sp"
+                            android:padding="5sp"
+                            android:text="@string/member_birth"
+                            android:textColorHighlight="@android:color/holo_red_dark" />
+
+                        <CheckBox
+                            android:id="@+id/member_marriage"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5sp"
+                            android:padding="5sp"
+                            android:text="@string/member_marriage"
+                            android:textColorHighlight="@android:color/holo_red_dark" />
+
+                        <CheckBox
+                            android:id="@+id/member_ayushman"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5sp"
+                            android:padding="5sp"
+                            android:text="@string/member_ayushman"
+                            android:textColorHighlight="@android:color/holo_red_dark" />
+
+                        <CheckBox
+                            android:id="@+id/member_bank"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5sp"
+                            android:padding="5sp"
+                            android:text="@string/member_bank"
+                            android:textColorHighlight="@android:color/holo_red_dark" />
+                    </LinearLayout>
+                </ScrollView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/member_reset"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+
+                        android:background="@android:color/holo_orange_light"
+                        android:text="@string/member_reset"
+                        android:textColor="@android:color/black"
+                        android:textSize="30dp" />
+
+                    <Button
+                        android:id="@+id/member_submit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@android:color/holo_orange_light"
+                        android:text="@string/member_submit"
+                        android:textSize="30sp" />
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

@@ -31,7 +31,7 @@ public class Home extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.new_member:
-                Intent intent = new Intent(Home.this, MemberList.class);
+                Intent intent = new Intent(Home.this, Member.class);
                 startActivity(intent);
                 return true;
 
@@ -42,6 +42,12 @@ public class Home extends AppCompatActivity {
     public void familyDetails(View view)
     {
         Intent intent = new Intent(Home.this, MemberList.class);
+        startActivity(intent);
+    }
+
+    public void addMember(View view)
+    {
+        Intent intent = new Intent(Home.this, Member.class);
         startActivity(intent);
     }
 }

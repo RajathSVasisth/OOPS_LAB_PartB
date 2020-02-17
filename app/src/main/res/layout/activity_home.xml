@@ -7,19 +7,6 @@
     android:layout_height="match_parent"
     tools:context="com.example.nitinpandit.aicte_activity.Home">
 
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary">
-
-        </android.support.v7.widget.Toolbar>
-
-    </android.support.design.widget.AppBarLayout>
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -36,18 +23,45 @@
                 android:orientation="horizontal">
 
                 <ImageView
+                    android:id="@+id/MemberList"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#F8F8F8"
+                    android:onClick="addMember"
+                    app:srcCompat="@drawable/add_member" />
+
+                <TextView
+                    android:id="@+id/MemberDesc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:onClick="addMember"
+                    android:text="@string/new_member"
+                    android:textSize="36sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <ImageView
                     android:id="@+id/FamilyList"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="#FFB300"
+                    android:background="#FAFAFA"
                     android:contentDescription="@string/new_family"
                     android:onClick="familyDetails"
                     android:scaleType="centerInside"
                     app:srcCompat="@drawable/family" />
 
                 <TextView
-                    android:id="@+id/Family_desc"
+                    android:id="@+id/FamilyDesc"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -55,6 +69,7 @@
                     android:onClick="familyDetails"
                     android:text="@string/new_family"
                     android:textSize="36sp" />
+
             </LinearLayout>
 
         </LinearLayout>

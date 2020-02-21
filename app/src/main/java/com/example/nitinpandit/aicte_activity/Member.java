@@ -58,25 +58,7 @@ public class Member extends AppCompatActivity {
         });
     }
 
-    /*public void reset(View view)
-    {
-            button = (Button) findViewById(R.id.member_reset);
 
-                member_name.setText("");
-                member_age.setText("");
-                male.setChecked(false);
-                female.setChecked(false);
-                others.setChecked(false);
-                member_phone.setText("");
-                member_occupation.setText("");
-
-                aadhar.setChecked(false);
-                driving.setChecked(false);
-                birth.setChecked(false);
-                marriage.setChecked(false);
-                ayushman.setChecked(false);
-                bank.setChecked(false);
-            }*/
 
     }
 

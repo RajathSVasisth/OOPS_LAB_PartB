@@ -1,27 +1,32 @@
 package com.example.nitinpandit.aicte_activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 
+import java.util.List;
+
 import androidx.room.Entity;
+import androidx.room.Insert;
 import androidx.room.Room;
 
 
 public class Member extends AppCompatActivity {
 
 
-    EditText name;
-    RadioButton male;
-    RadioButton female;
-    RadioButton others;
-    EditText age;
-    EditText phone;
-    EditText occupation;
+    public EditText name;
+    public RadioButton male;
+    public RadioButton female;
+    public RadioButton others;
+    public EditText age;
+    public EditText phone;
+    public EditText occupation;
 
     CheckBox aadhar;
     CheckBox driving;
@@ -31,6 +36,14 @@ public class Member extends AppCompatActivity {
     CheckBox bank;
 
     Button reset_button;
+    Button submit_button;
+
+    public String member_name;
+    public int member_age;
+    public String member_gender;
+    public String member_phone ;
+    public String member_occupation;
+
     //Button button;
 
     @Override
@@ -54,9 +67,6 @@ public class Member extends AppCompatActivity {
         bank =  findViewById(R.id.member_bank);
 
 
-
-
-
     }
 
     public void reset(View view)
@@ -78,9 +88,43 @@ public class Member extends AppCompatActivity {
         bank.setChecked(false);
     }
 
+    public void submit(View view)
+    {
 
+        String gender;
+        if(male.isChecked())
+            gender = "male";
+        else if(female.isChecked())
+            gender = "female";
+        else
+            gender = "others";
 
+         member_name = name.getText().toString();
+         member_age =  Integer.parseInt(age.getText().toString());
+         member_gender = gender;
+         member_phone = phone.getText().toString();
+         member_occupation = occupation.getText().toString();
+
+        submit_button = findViewById(R.id.member_submit);
+        DatabaseHandler db = new DatabaseHandler(this);
+
+        Member_info_entity m = new Member_info_entity(member_name,member_gender,member_age,
+                member_occupation, member_phone);
+        Log.d("Insert: ", "Inserting ..");
+        db.addMember(m);
+
+        //Reading
+        List<Member_info_entity> members = db.getAllMembers();
+
+        for (Member_info_entity mn : members) {
+            String log = "Id: " + mn.getID() + " ,Name: " + mn.getName() + " ,Phone: " +
+                    mn.getPhone_number();
+            // Writing Contacts to log
+            Log.d("Name: ", log);
+        }
+        finish();
     }
+}
 
 
 

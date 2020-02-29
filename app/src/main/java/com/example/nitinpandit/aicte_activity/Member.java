@@ -129,7 +129,7 @@ public class Member extends AppCompatActivity {
             // Writing Contacts to log
             Log.d("Name: ", log);
         }*/
-        //finish();
+        finish();
     }
 }
 

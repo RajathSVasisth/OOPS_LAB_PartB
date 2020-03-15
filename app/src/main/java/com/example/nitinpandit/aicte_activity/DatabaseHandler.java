@@ -15,7 +15,7 @@ import java.util.List;
 
 public class DatabaseHandler extends SQLiteOpenHelper {
 
-    public int id=1;
+
     SQLiteDatabase db;
 
     public static final String CONTENT_AUTHORITY = "com.example.nitinpandit.aicte_activity";
@@ -104,5 +104,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             res.moveToNext();
         }
         return array_list;
+    }
+
+    public Cursor getData(int id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor res =  db.rawQuery( "select * from "+TABLE_MEMBERS+" where "+MEMBER_ID +"="+id+"", null );
+        return res;
     }
 }

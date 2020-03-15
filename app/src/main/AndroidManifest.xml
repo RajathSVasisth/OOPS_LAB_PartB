@@ -22,6 +22,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".Member" />
+        <activity android:name=".DisplayMember" />
+
     </application>
 
 </manifest>

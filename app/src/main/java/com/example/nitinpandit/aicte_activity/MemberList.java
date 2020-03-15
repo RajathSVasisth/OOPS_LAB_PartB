@@ -1,5 +1,6 @@
 package com.example.nitinpandit.aicte_activity;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -13,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearSmoothScroller;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CursorAdapter;
 import android.widget.ListView;
@@ -35,6 +37,21 @@ public class MemberList extends AppCompatActivity {
 
         memberList = (ListView) findViewById(R.id.member_list_view);
         memberList.setAdapter(arrayAdapter);
+        memberList.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,long arg3) {
+                // TODO Auto-generated method stub
+                int id_To_Search = arg2 + 1;
+
+                Bundle dataBundle = new Bundle();
+                dataBundle.putInt("id", id_To_Search);
+
+                Intent intent = new Intent(MemberList.this,DisplayMember.class);
+
+                intent.putExtras(dataBundle);
+                startActivity(intent);
+            }
+        });
         };
 
 }

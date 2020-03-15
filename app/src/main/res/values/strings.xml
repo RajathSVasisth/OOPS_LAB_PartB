@@ -16,7 +16,11 @@
     <string name="member_reset"> RESET </string>
     <string name="member_submit"> SUBMIT </string>
 
-    <string name="new_member"> MEMBER </string>
-    <string name="new_family"> FAMILY </string>
+    <string name="new_member"> NEW MEMBER </string>
+    <string name="new_family"> MEMBER_LIST </string>
+
+    <string name="member_delete"> DELETE </string>
+    <string name="member_edit">EDIT</string>
+    <string name="done"> DONE </string>
     <string name="title_activity_member_list">MemberList</string>
 </resources>

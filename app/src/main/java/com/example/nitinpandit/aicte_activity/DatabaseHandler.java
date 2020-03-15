@@ -111,4 +111,28 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         Cursor res =  db.rawQuery( "select * from "+TABLE_MEMBERS+" where "+MEMBER_ID +"="+id+"", null );
         return res;
     }
+
+    public boolean updateMember (Integer id, Member_info_entity member) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        //values.put(MEMBER_ID,id++);
+
+        values.put(MEMBER_OCCUPATION, member.occupation);
+        values.put(MEMBER_PHONE_NUMBER, member.phone_number);
+        values.put(MEMBER_AGE, member.age);
+        values.put(MEMBER_GENDER, member.gender); // Contact Phone
+        values.put(MEMBER_NAME, member.name); // Member Name
+        long res = db.update(TABLE_MEMBERS, values, MEMBER_ID+" =?", new String[] {Integer.toString(id)});
+        if(res!=-1)
+        return true;
+        else
+            return false;
+    }
+
+    public Integer deleteMember (Integer id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.delete(TABLE_MEMBERS,
+                MEMBER_ID+" = ? ",
+                new String[] { Integer.toString(id) });
+    }
 }

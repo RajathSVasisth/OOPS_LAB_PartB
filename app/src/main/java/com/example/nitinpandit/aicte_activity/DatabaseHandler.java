@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.net.Uri;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -12,19 +13,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class DatabaseHandler extends SQLiteOpenHelper{
+public class DatabaseHandler extends SQLiteOpenHelper {
 
     public int id=1;
     SQLiteDatabase db;
-    private static final int DATABASE_VERSION = 1;
-    private static final String DATABASE_NAME = "members.db";
-    private static final String TABLE_MEMBERS = "MembersList";
-    private static final String MEMBER_ID = "id";
-    private static final String MEMBER_NAME = "Name";
-    private static final String MEMBER_GENDER = "Gender";
-    private static final String MEMBER_AGE = "Age";
-    private static final String MEMBER_PHONE_NUMBER = "Phone_Number";
-    private static final String MEMBER_OCCUPATION = "Occupation";
+
+    public static final String CONTENT_AUTHORITY = "com.example.nitinpandit.aicte_activity";
+    public static final Uri BASE_CONTENT_URI = Uri.parse("content://" + CONTENT_AUTHORITY);
+
+
+    public static final int DATABASE_VERSION = 1;
+    public static final String DATABASE_NAME = "members.db";
+    public static final String TABLE_MEMBERS = "MembersList";
+    public static final String MEMBER_ID = "id";
+    public static final String MEMBER_NAME = "Name";
+    public static final String MEMBER_GENDER = "Gender";
+    public static final String MEMBER_AGE = "Age";
+    public static final String MEMBER_PHONE_NUMBER = "Phone_Number";
+    public static final String MEMBER_OCCUPATION = "Occupation";
 
     public DatabaseHandler(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -85,27 +91,18 @@ public class DatabaseHandler extends SQLiteOpenHelper{
         return -1;
     }
 
-    public List<Member_info_entity> getAllMembers() {
-        List<Member_info_entity> memberList = new ArrayList<Member_info_entity>();
-        // Select All Query
-        String selectQuery = "SELECT  * FROM " + TABLE_MEMBERS;
+    public ArrayList<String> getAllMembers() {
+        ArrayList<String> array_list = new ArrayList<String>();
 
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery(selectQuery, null);
+        //hp = new HashMap();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor res =  db.rawQuery( "select "+MEMBER_NAME+" from "+TABLE_MEMBERS, null );
+        res.moveToFirst();
 
-        // looping through all rows and adding to list
-        if (cursor.moveToFirst()) {
-            do {
-                Member_info_entity member_info_entity = new Member_info_entity();
-                member_info_entity.name = cursor.getString(0);
-                member_info_entity.gender = (cursor.getString(1));
-                member_info_entity.age = Integer.parseInt(cursor.getString(2));
-                // Adding contact to list
-                memberList.add(member_info_entity);
-            } while (cursor.moveToNext());
+        while(res.isAfterLast() == false){
+            array_list.add(res.getString(res.getColumnIndex(MEMBER_NAME)));
+            res.moveToNext();
         }
-
-        // return contact list
-        return memberList;
+        return array_list;
     }
 }

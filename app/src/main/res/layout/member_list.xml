@@ -16,5 +16,12 @@
         android:text="@string/new_member"
         android:textSize="24sp" />
 
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/member_list_view">
+
+    </ListView>
+
 
 </LinearLayout>

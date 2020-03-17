@@ -56,6 +56,11 @@ public class Member_info_entity {
         return this.occupation;
     }
 
+    public String getAge()
+    {
+        return Integer.toString(this.age);
+    }
+
 
 
 }

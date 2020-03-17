@@ -117,12 +117,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         //values.put(MEMBER_ID,id++);
 
-        values.put(MEMBER_OCCUPATION, member.occupation);
-        values.put(MEMBER_PHONE_NUMBER, member.phone_number);
-        values.put(MEMBER_AGE, member.age);
-        values.put(MEMBER_GENDER, member.gender); // Contact Phone
-        values.put(MEMBER_NAME, member.name); // Member Name
+        values.put(MEMBER_OCCUPATION, member.getOccupation());
+        values.put(MEMBER_PHONE_NUMBER, member.getPhone_number());
+        values.put(MEMBER_AGE, member.getAge());
+        values.put(MEMBER_GENDER, member.getGender()); // Contact Phone
+        values.put(MEMBER_NAME, member.getName()); // Member Name
         long res = db.update(TABLE_MEMBERS, values, MEMBER_ID+" =?", new String[] {Integer.toString(id)});
+
         if(res!=-1)
         return true;
         else

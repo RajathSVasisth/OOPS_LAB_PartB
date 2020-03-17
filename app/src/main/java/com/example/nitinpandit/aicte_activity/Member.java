@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -115,10 +116,9 @@ public class Member extends AppCompatActivity {
                 member_occupation, member_phone);
         Log.d("Insert: ", "Inserting ..");
         long i = db.addMember(m);
-        if(i==-1)
-            name.setText("ERROR");
-        else
-            name.setText("SUCCESS");
+        if(i!=-1)
+            Toast.makeText(getApplicationContext(), "Inserted Successfully",
+                    Toast.LENGTH_SHORT).show();
 
         //Reading
         /*List<Member_info_entity> members = db.getAllMembers();

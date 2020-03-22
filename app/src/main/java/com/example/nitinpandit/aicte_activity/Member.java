@@ -46,6 +46,12 @@ public class Member extends AppCompatActivity {
     public String member_gender;
     public String member_phone ;
     public String member_occupation;
+    public String member_aadhar;
+    public String member_driving;
+    public String member_birth;
+    public String member_marriage;
+    public String member_ayushman;
+    public String member_bank;
 
     //Button button;
 
@@ -107,17 +113,27 @@ public class Member extends AppCompatActivity {
          member_gender = gender;
          member_phone = phone.getText().toString();
          member_occupation = occupation.getText().toString();
+         member_aadhar = Boolean.toString(aadhar.isChecked());
+         member_driving = Boolean.toString(driving.isChecked());
+         member_birth = Boolean.toString(birth.isChecked());
+         member_marriage = Boolean.toString(marriage.isChecked());
+         member_ayushman = Boolean.toString(ayushman.isChecked());
+         member_bank = Boolean.toString(bank.isChecked());
 
         submit_button = findViewById(R.id.member_submit);
 
 
 
         Member_info_entity m = new Member_info_entity(member_name,member_gender,member_age,
-                member_occupation, member_phone);
+                member_occupation, member_phone,member_aadhar,member_driving,member_birth,member_marriage,
+                member_ayushman,member_bank);
         Log.d("Insert: ", "Inserting ..");
         long i = db.addMember(m);
         if(i!=-1)
             Toast.makeText(getApplicationContext(), "Inserted Successfully",
+                    Toast.LENGTH_SHORT).show();
+        else
+            Toast.makeText(getApplicationContext(), "Insertion Unsuccessful",
                     Toast.LENGTH_SHORT).show();
 
         //Reading

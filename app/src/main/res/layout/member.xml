@@ -205,6 +205,8 @@
                             android:padding="5sp"
                             android:text="@string/member_bank"
                             android:textColorHighlight="@android:color/holo_red_dark" />
+
+
                     </LinearLayout>
                 </ScrollView>
 

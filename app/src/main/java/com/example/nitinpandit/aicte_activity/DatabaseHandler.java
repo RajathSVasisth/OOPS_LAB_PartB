@@ -31,6 +31,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public static final String MEMBER_AGE = "Age";
     public static final String MEMBER_PHONE_NUMBER = "Phone_Number";
     public static final String MEMBER_OCCUPATION = "Occupation";
+    public static final String MEMBER_AADHAR = "Aadhar";
+    public static final String MEMBER_DRIVING = "Driving";
+    public static final String MEMBER_BIRTH = "Birth";
+    public static final String MEMBER_MARRIAGE = "Marriage";
+    public static final String MEMBER_AYUSHMAN = "Ayushman";
+    public static final String MEMBER_BANK = "Bank";
 
     public DatabaseHandler(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -45,7 +51,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         String CREATE_MEMBER_TABLE = "CREATE TABLE " + TABLE_MEMBERS + "("
                 + MEMBER_ID + " INTEGER PRIMARY KEY ," + MEMBER_NAME + " TEXT,"
                 + MEMBER_GENDER + " TEXT,"+ MEMBER_AGE + " INTEGER,"
-                + MEMBER_PHONE_NUMBER + " TEXT," + MEMBER_OCCUPATION + " TEXT);";
+                + MEMBER_PHONE_NUMBER + " TEXT DEFAULT \"NA\"," + MEMBER_OCCUPATION + " TEXT DEFAULT \"NA\","
+                + MEMBER_AADHAR+" TEXT,"+MEMBER_DRIVING+" TEXT,"+MEMBER_BIRTH+" TEXT,"
+                + MEMBER_MARRIAGE+" TEXT, "+ MEMBER_AYUSHMAN+" TEXT, "+MEMBER_BANK+" TEXT);";
         db.execSQL(CREATE_MEMBER_TABLE);
 
         //System.out.println("Created database");
@@ -67,11 +75,19 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         //values.put(MEMBER_ID,id++);
 
+        values.put(MEMBER_AADHAR,member.aadhar);
+        values.put(MEMBER_DRIVING,member.driving);
+        values.put(MEMBER_BIRTH,member.birth);
+        values.put(MEMBER_MARRIAGE,member.marriage);
+        values.put(MEMBER_AYUSHMAN,member.ayushman);
+        values.put(MEMBER_BANK,member.bank);
+
         values.put(MEMBER_OCCUPATION, member.occupation);
         values.put(MEMBER_PHONE_NUMBER, member.phone_number);
         values.put(MEMBER_AGE, member.age);
         values.put(MEMBER_GENDER, member.gender); // Contact Phone
         values.put(MEMBER_NAME, member.name); // Member Name
+
 
         //SQLiteDatabase db = this.getWritableDatabase();
         // Inserting Row
@@ -116,6 +132,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         //values.put(MEMBER_ID,id++);
+        values.put(MEMBER_AADHAR,member.aadhar);
+        values.put(MEMBER_DRIVING,member.driving);
+        values.put(MEMBER_BIRTH,member.birth);
+        values.put(MEMBER_MARRIAGE,member.marriage);
+        values.put(MEMBER_AYUSHMAN,member.ayushman);
+        values.put(MEMBER_BANK,member.bank);
 
         values.put(MEMBER_OCCUPATION, member.getOccupation());
         values.put(MEMBER_PHONE_NUMBER, member.getPhone_number());

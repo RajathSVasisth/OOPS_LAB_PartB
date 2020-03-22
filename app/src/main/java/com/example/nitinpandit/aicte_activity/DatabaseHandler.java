@@ -27,6 +27,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public static final String TABLE_MEMBERS = "MembersList";
     public static final String MEMBER_ID = "id";
     public static final String MEMBER_NAME = "Name";
+    public static final String MEMBER_DATE = "Date";
     public static final String MEMBER_GENDER = "Gender";
     public static final String MEMBER_AGE = "Age";
     public static final String MEMBER_PHONE_NUMBER = "Phone_Number";
@@ -50,6 +51,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         //db.openOrCreateDatabase("members.db",null,null);
         String CREATE_MEMBER_TABLE = "CREATE TABLE " + TABLE_MEMBERS + "("
                 + MEMBER_ID + " INTEGER PRIMARY KEY ," + MEMBER_NAME + " TEXT,"
+                +MEMBER_DATE+" TEXT,"
                 + MEMBER_GENDER + " TEXT,"+ MEMBER_AGE + " INTEGER,"
                 + MEMBER_PHONE_NUMBER + " TEXT DEFAULT \"NA\"," + MEMBER_OCCUPATION + " TEXT DEFAULT \"NA\","
                 + MEMBER_AADHAR+" TEXT,"+MEMBER_DRIVING+" TEXT,"+MEMBER_BIRTH+" TEXT,"
@@ -85,7 +87,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(MEMBER_OCCUPATION, member.occupation);
         values.put(MEMBER_PHONE_NUMBER, member.phone_number);
         values.put(MEMBER_AGE, member.age);
-        values.put(MEMBER_GENDER, member.gender); // Contact Phone
+        values.put(MEMBER_GENDER, member.gender);
+        values.put(MEMBER_DATE,member.date);// Contact Phone
         values.put(MEMBER_NAME, member.name); // Member Name
 
 
@@ -117,6 +120,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         while(res.isAfterLast() == false){
             array_list.add(res.getString(res.getColumnIndex(MEMBER_NAME)));
+
             res.moveToNext();
         }
         return array_list;
@@ -142,7 +146,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(MEMBER_OCCUPATION, member.getOccupation());
         values.put(MEMBER_PHONE_NUMBER, member.getPhone_number());
         values.put(MEMBER_AGE, member.getAge());
-        values.put(MEMBER_GENDER, member.getGender()); // Contact Phone
+        values.put(MEMBER_GENDER, member.getGender());
+        values.put(MEMBER_DATE,member.date);
         values.put(MEMBER_NAME, member.getName()); // Member Name
         long res = db.update(TABLE_MEMBERS, values, MEMBER_ID+" =?", new String[] {Integer.toString(id)});
 

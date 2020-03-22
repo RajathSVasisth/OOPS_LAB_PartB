@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Member">
+    tools:context=".DisplayMember">
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,9 +27,7 @@
             android:text="MEMBER"
             android:textColor="@android:color/holo_red_dark"
             android:textSize="30sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="16dp" />
+            />
 
         <ScrollView
             android:layout_width="match_parent"
@@ -49,7 +48,7 @@
                         android:orientation="vertical">
 
                         <EditText
-                            android:id="@+id/member_name"
+                            android:id="@+id/display_member_name"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -63,7 +62,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:id="@+id/member_date"
+                            android:id="@+id/display_member_date"
                             android:layout_gravity="center"
                             android:layout_margin="5sp"
                             android:hint="Date"
@@ -72,8 +71,8 @@
                             android:textSize="20dp"
                             />
 
-                        <TextView
-                            android:id="@+id/member_gender_text"
+                        <EditText
+                            android:id="@+id/display_member_gender_text"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -81,42 +80,10 @@
                             android:text="@string/meber_gender_text"
                             android:textSize="20sp" />
 
-                        <RadioGroup
-                            android:id="@+id/member_gender"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_margin="5sp"
-                            android:gravity="center">
 
-
-                            <RadioButton
-                                android:id="@+id/gender_male"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="left"
-                                android:layout_weight="1"
-                                android:text="Male" />
-
-                            <RadioButton
-                                android:id="@+id/gender_female"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="left"
-                                android:layout_weight="1"
-                                android:text="female" />
-
-                            <RadioButton
-                                android:id="@+id/gender_others"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="left"
-                                android:layout_weight="1"
-                                android:text="Others" />
-
-                        </RadioGroup>
 
                         <EditText
-                            android:id="@+id/member_age"
+                            android:id="@+id/display_member_age"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -129,7 +96,7 @@
                             android:textSize="20dp" />
 
                         <EditText
-                            android:id="@+id/member_phone"
+                            android:id="@+id/display_member_phone"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -142,7 +109,7 @@
                             android:textSize="20dp" />
 
                         <EditText
-                            android:id="@+id/member_occupation"
+                            android:id="@+id/display_member_occupation"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -154,7 +121,7 @@
                             android:textSize="20dp" />
 
                         <TextView
-                            android:id="@+id/member_cards"
+                            android:id="@+id/display_member_cards"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -165,7 +132,7 @@
                             android:textSize="20dp" />
 
                         <CheckBox
-                            android:id="@+id/member_aadhar"
+                            android:id="@+id/display_member_aadhar"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="5sp"
@@ -174,7 +141,7 @@
                             android:textColorHighlight="@android:color/holo_red_dark" />
 
                         <CheckBox
-                            android:id="@+id/member_driving"
+                            android:id="@+id/display_member_driving"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="5sp"
@@ -183,7 +150,7 @@
                             android:textColorHighlight="@android:color/holo_red_dark" />
 
                         <CheckBox
-                            android:id="@+id/member_birth"
+                            android:id="@+id/display_member_birth"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="5sp"
@@ -192,7 +159,7 @@
                             android:textColorHighlight="@android:color/holo_red_dark" />
 
                         <CheckBox
-                            android:id="@+id/member_marriage"
+                            android:id="@+id/display_member_marriage"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="5sp"
@@ -201,7 +168,7 @@
                             android:textColorHighlight="@android:color/holo_red_dark" />
 
                         <CheckBox
-                            android:id="@+id/member_ayushman"
+                            android:id="@+id/display_member_ayushman"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="5sp"
@@ -210,7 +177,7 @@
                             android:textColorHighlight="@android:color/holo_red_dark" />
 
                         <CheckBox
-                            android:id="@+id/member_bank"
+                            android:id="@+id/display_member_bank"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="5sp"
@@ -219,38 +186,54 @@
                             android:textColorHighlight="@android:color/holo_red_dark" />
 
 
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <Button
+                                android:id="@+id/member_delete"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:onClick="delete"
+                                android:background="@android:color/holo_orange_light"
+                                android:text="@string/member_delete"
+                                android:textColor="@android:color/black"
+                                android:textSize="30dp" />
+
+                            <Button
+                                android:id="@+id/member_edit"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:onClick="edit"
+                                android:background="@android:color/holo_orange_light"
+                                android:text="@string/member_edit"
+                                android:textSize="30sp" />
+
+
+
+                        </LinearLayout>
+                        <Button
+                            android:id="@+id/editDone"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5sp"
+                            android:text="@string/done"
+                            android:visibility="gone"
+                            android:background="@android:color/holo_orange_light"
+                            android:textSize="30sp"/>
                     </LinearLayout>
+
+
                 </ScrollView>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
 
-                    <Button
-                        android:id="@+id/member_reset"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:onClick="reset"
-                        android:background="@android:color/holo_orange_light"
-                        android:text="@string/member_reset"
-                        android:textColor="@android:color/black"
-                        android:textSize="30dp" />
 
-                    <Button
-                        android:id="@+id/member_submit"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:onClick="submit"
-                        android:background="@android:color/holo_orange_light"
-                        android:text="@string/member_submit"
-                        android:textSize="30sp" />
-                </LinearLayout>
+
             </LinearLayout>
         </ScrollView>
 
     </LinearLayout>
-
 </android.support.constraint.ConstraintLayout>

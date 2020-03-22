@@ -1,11 +1,14 @@
 package com.example.nitinpandit.aicte_activity;
 
 
+import java.util.Calendar;
+
 public class Member_info_entity {
     int id=0;
 
     public int uid;
     public String name;
+    public String date;
     public String gender;
     public int age;
     public String phone_number;
@@ -17,11 +20,12 @@ public class Member_info_entity {
     public String ayushman;
     public String bank;
 
-    public Member_info_entity(String name, String gender, int age, String occupation
+    public Member_info_entity(String name, String date,String gender, int age, String occupation
             , String phone_number,String aadhar,String driving,String birth,String marriage
             , String ayushman,String bank)
     {
         this.name = name;
+        this.date=date;
         this.gender = gender;
         this.age = age;
         this.phone_number = phone_number;
@@ -37,6 +41,12 @@ public class Member_info_entity {
     public Member_info_entity()
     {
         this.name = null;
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        this.date = Integer.toString(day)+"/"+Integer.toString(month)+"/"+Integer.toString(year);
         this.gender = null;
         this.age = 0;
         this.phone_number = null;

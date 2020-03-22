@@ -10,8 +10,11 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import androidx.room.Entity;
@@ -24,6 +27,7 @@ public class Member extends AppCompatActivity {
 
     DatabaseHandler db;
     public EditText name;
+    TextView date;
     public RadioButton male;
     public RadioButton female;
     public RadioButton others;
@@ -38,10 +42,12 @@ public class Member extends AppCompatActivity {
     CheckBox ayushman;
     CheckBox bank;
 
+
     Button reset_button;
     Button submit_button;
 
     public String member_name;
+    public String member_date;
     public int member_age;
     public String member_gender;
     public String member_phone ;
@@ -61,6 +67,13 @@ public class Member extends AppCompatActivity {
         setContentView(R.layout.member);
          db = new DatabaseHandler(getApplicationContext(),null,null,1);
         name = findViewById(R.id.member_name);
+        date = findViewById(R.id.member_date);
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        date.setText(Integer.toString(day)+"/"+Integer.toString(month)+"/"+Integer.toString(year));
         male =  findViewById(R.id.gender_male);
         female =  findViewById(R.id.gender_female);
         others =  findViewById(R.id.gender_others);
@@ -109,6 +122,7 @@ public class Member extends AppCompatActivity {
             gender = "others";
 
          member_name = name.getText().toString();
+         member_date=date.getText().toString();
          member_age =  Integer.parseInt(age.getText().toString());
          member_gender = gender;
          member_phone = phone.getText().toString();
@@ -124,7 +138,7 @@ public class Member extends AppCompatActivity {
 
 
 
-        Member_info_entity m = new Member_info_entity(member_name,member_gender,member_age,
+        Member_info_entity m = new Member_info_entity(member_name,member_date,member_gender,member_age,
                 member_occupation, member_phone,member_aadhar,member_driving,member_birth,member_marriage,
                 member_ayushman,member_bank);
         Log.d("Insert: ", "Inserting ..");

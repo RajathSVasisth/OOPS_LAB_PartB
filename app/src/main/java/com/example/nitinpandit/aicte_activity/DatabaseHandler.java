@@ -181,6 +181,38 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return array_list;
     }
 
+    public ArrayList<String> getALlMembersStudents(String usn) {
+        ArrayList<String> array_list = new ArrayList<String>();
+
+        //hp = new HashMap();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor res =  db.rawQuery( "select "+MEMBER_NAME+" from "+TABLE_MEMBERS+" WHERE "+STUDENT_USN+"="+usn, null );
+        res.moveToFirst();
+
+        while(res.isAfterLast() == false){
+            array_list.add(res.getString(res.getColumnIndex(MEMBER_NAME)));
+
+            res.moveToNext();
+        }
+        return array_list;
+    }
+
+    public ArrayList<Integer> getALlMembersStudentsID(String usn) {
+        ArrayList<Integer> array_list = new ArrayList<Integer>();
+
+        //hp = new HashMap();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor res =  db.rawQuery( "select "+MEMBER_ID+" from "+TABLE_MEMBERS+" WHERE "+STUDENT_USN+"="+usn, null );
+        res.moveToFirst();
+
+        while(res.isAfterLast() == false){
+            array_list.add(res.getInt(res.getColumnIndex(MEMBER_ID)));
+
+            res.moveToNext();
+        }
+        return array_list;
+    }
+
     public Cursor getData(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor res =  db.rawQuery( "select * from "+TABLE_MEMBERS+" where "+MEMBER_ID +"="+id+"", null );

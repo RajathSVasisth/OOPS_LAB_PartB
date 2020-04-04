@@ -16,6 +16,35 @@
         android:text="@string/new_member"
         android:textSize="24sp" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="6"
+            android:id="@+id/search_editText"
+            android:hint="ENTER STUDENT USN TO SEARCH"
+            android:padding="5dp"
+            android:layout_margin="5dp"
+            ></EditText>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:id="@+id/search_button"
+            android:text="SEARCH"
+            android:clickable="false"
+            android:padding="5dp"
+            android:onClick="search"
+            android:drawableLeft="@drawable/search_img"
+            android:layout_margin="5dp"></Button>
+
+    </LinearLayout>
+
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

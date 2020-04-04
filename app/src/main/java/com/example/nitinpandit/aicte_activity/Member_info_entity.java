@@ -19,10 +19,14 @@ public class Member_info_entity {
     public String marriage;
     public String ayushman;
     public String bank;
+    public String student_name;
+    public String student_usn;
+    public int student_count;
+    //public byte[] photo;
 
     public Member_info_entity(String name, String date,String gender, int age, String occupation
             , String phone_number,String aadhar,String driving,String birth,String marriage
-            , String ayushman,String bank)
+            , String ayushman,String bank,String student_name, String student_usn,int student_count)
     {
         this.name = name;
         this.date=date;
@@ -30,12 +34,15 @@ public class Member_info_entity {
         this.age = age;
         this.phone_number = phone_number;
         this.occupation = occupation;
+        this.student_name = student_name;
+        this.student_usn = student_usn;
         this.aadhar = aadhar;
         this.driving = driving;
         this.birth = birth;
         this.marriage = marriage;
         this.ayushman = ayushman;
         this.bank = bank;
+        this.student_count = student_count;
     }
 
     public Member_info_entity()
@@ -49,6 +56,8 @@ public class Member_info_entity {
         this.date = Integer.toString(day)+"/"+Integer.toString(month)+"/"+Integer.toString(year);
         this.gender = null;
         this.age = 0;
+        this.student_name = null;
+        this.student_usn = null;
         this.phone_number = null;
         this.occupation = null;
         this.aadhar = null;
@@ -57,6 +66,7 @@ public class Member_info_entity {
         this.marriage = null;
         this.ayushman = null;
         this.bank = null;
+        this.student_count=1;
     }
 
     public int getID()

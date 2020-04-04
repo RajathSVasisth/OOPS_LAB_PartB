@@ -2,24 +2,37 @@ package com.example.nitinpandit.aicte_activity;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+
 public class DisplayMember extends AppCompatActivity {
     private DatabaseHandler mydb;
 
+    static final int REQUEST_IMAGE_CAPTURE = 1;
     int Value;
+    EditText display_student_name;
+    EditText display_student_usn;
     EditText display_name;
     EditText display_gender;
     EditText display_age;
@@ -37,6 +50,8 @@ public class DisplayMember extends AppCompatActivity {
     Button EditButton;
     Button DeleteButton;
     Button DoneButton;
+    Button edittakePhoto;
+    ImageView displayPhoto;
 
     int id_To_Update = 0;
 
@@ -46,11 +61,16 @@ public class DisplayMember extends AppCompatActivity {
         EditButton = (Button) findViewById(R.id.member_edit);
         DeleteButton = (Button) findViewById(R.id.member_delete);
         DoneButton = (Button) findViewById(R.id.editDone);
+        /*edittakePhoto = (Button) findViewById(R.id.display_member_take_photo);
+        displayPhoto = (ImageView) findViewById(R.id.display_member_photo);*/
+
 
         DoneButton.setVisibility(View.GONE);
-
+        //edittakePhoto.setVisibility(View.GONE);
         //DoneButton.setVisibility(View.GONE);
         setContentView(R.layout.member_display_item);
+        display_student_name = (EditText) findViewById(R.id.display_student_name);
+        display_student_usn = (EditText) findViewById(R.id.display_student_usn);
         display_name = (EditText) findViewById(R.id.display_member_name);
         display_date = (TextView) findViewById(R.id.display_member_date);
         display_gender = (EditText) findViewById(R.id.display_member_gender_text);
@@ -78,12 +98,15 @@ public class DisplayMember extends AppCompatActivity {
                     id_To_Update = Value;
                     rs.moveToFirst();
 
+                    String studentname = rs.getString(rs.getColumnIndex(DatabaseHandler.STUDENT_NAME));
+                    String studentusn = rs.getString(rs.getColumnIndex(DatabaseHandler.STUDENT_USN));
                     String name = rs.getString(rs.getColumnIndex(DatabaseHandler.MEMBER_NAME));
 
                     String phone = rs.getString(rs.getColumnIndex(DatabaseHandler.MEMBER_PHONE_NUMBER));
                     String gender = rs.getString(rs.getColumnIndex(DatabaseHandler.MEMBER_GENDER));
                     String age = rs.getString(rs.getColumnIndex(DatabaseHandler.MEMBER_AGE));
                     String occupation = rs.getString(rs.getColumnIndex(DatabaseHandler.MEMBER_OCCUPATION));
+                   // byte photo[] = rs.getBlob(rs.getColumnIndex(DatabaseHandler.MEMBER_PHOTO));
                     String aadhar = rs.getString(rs.getColumnIndex(DatabaseHandler.MEMBER_AADHAR));
                     String driving = rs.getString(rs.getColumnIndex(DatabaseHandler.MEMBER_DRIVING));
                     String birth = rs.getString(rs.getColumnIndex(DatabaseHandler.MEMBER_BIRTH));
@@ -91,11 +114,23 @@ public class DisplayMember extends AppCompatActivity {
                     String ayushman = rs.getString(rs.getColumnIndex(DatabaseHandler.MEMBER_AYUSHMAN));
                     String bank = rs.getString(rs.getColumnIndex(DatabaseHandler.MEMBER_BANK));
                     String date = rs.getString(rs.getColumnIndex(DatabaseHandler.MEMBER_DATE));
-                    Log.d("Date",date);
+                    Log.d("Date", date);
+           //         Log.d("byte",Integer.toString(photo.length));
 
                     if (!rs.isClosed()) {
                         rs.close();
                     }
+
+                    display_student_name.setText((CharSequence) studentname);
+                    display_student_name.setFocusable(false);
+                    display_student_name.setClickable(false);
+                    display_student_name.setEnabled(false);
+
+                    display_student_usn.setText((CharSequence) studentusn);
+                    display_student_usn.setFocusable(false);
+                    display_student_usn.setClickable(false);
+                    display_student_usn.setEnabled(false);
+
 
                     display_name.setText((CharSequence) name);
                     display_name.setFocusable(false);
@@ -157,6 +192,13 @@ public class DisplayMember extends AppCompatActivity {
                     display_bank.setClickable(false);
                     display_bank.setEnabled(false);
 
+
+
+                    /*Bitmap bitmap = BitmapFactory.decodeByteArray(photo, 0, photo.length);
+
+                    displayPhoto.setImageBitmap(bitmap);*/
+
+
                 } catch (Exception e) {
                     Log.d("error", e.toString());
                 }
@@ -173,6 +215,9 @@ public class DisplayMember extends AppCompatActivity {
         DeleteButton = (Button) findViewById(R.id.member_delete);
         DoneButton = (Button) findViewById(R.id.editDone);
 
+        /*edittakePhoto = (Button) findViewById(R.id.display_member_take_photo);
+        edittakePhoto.setVisibility(View.VISIBLE);
+        displayPhoto = (ImageView) findViewById(R.id.display_member_photo);*/
         EditButton.setVisibility(View.GONE);
         DeleteButton.setVisibility(View.GONE);
 
@@ -180,10 +225,26 @@ public class DisplayMember extends AppCompatActivity {
 
         if (extras != null) {
             Value = extras.getInt("id");
-        Log.d("ID",Integer.toString(Value));
+            Log.d("ID", Integer.toString(Value));
             if (Value > 0) {
                 try {
                     int v = Value;
+
+                    /*BitmapDrawable drawable = (BitmapDrawable) displayPhoto.getDrawable();
+                    Bitmap bitmap = (drawable).getBitmap();
+                    ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, 80, stream);
+                    final byte[] byteArray = stream.toByteArray();*/
+
+                    display_student_name.setFocusable(true);
+                    display_student_name.setClickable(true);
+                    display_student_name.setFocusableInTouchMode(true);
+                    display_student_name.setEnabled(true);
+
+                    display_student_usn.setFocusable(true);
+                    display_student_usn.setClickable(true);
+                    display_student_usn.setFocusableInTouchMode(true);
+                    display_student_usn.setEnabled(true);
 
                     display_name.setFocusable(true);
                     display_name.setClickable(true);
@@ -251,29 +312,56 @@ public class DisplayMember extends AppCompatActivity {
                     DoneButton.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-
                             Member_info_entity member;
-                            member = new Member_info_entity(display_name.getText().toString(),
-                                    display_date.getText().toString(),
-                                    display_gender.getText().toString()
-                                    , Integer.parseInt(display_age.getText().toString())
-                                    , display_occupation.getText().toString()
-                                    , display_phone.getText().toString(),Boolean.toString(display_aadhar.isChecked())
-                                    , Boolean.toString(display_driving.isChecked()), Boolean.toString(display_birth.isChecked())
-                                    , Boolean.toString(display_marriage.isChecked()), Boolean.toString(display_ayushman.isChecked())
-                                    ,Boolean.toString(display_bank.isChecked()));
-                            if(mydb.updateMember(Value, member)) {
-                                Toast.makeText(getApplicationContext(), "Updated Successfully",
-                                        Toast.LENGTH_SHORT).show();
-                                Log.d("SUccessful update", "true");
-                                Intent intent = new Intent(DisplayMember.this,Home.class);
-                                startActivity(intent);
-                                finish();
-                            }
-                            else {
+                            int uid = mydb.getStudentMatch(display_student_usn.getText().toString());
+                            if(uid==-1) {
 
-                                Log.d("Unsuccessful update", "false");
+                                member = new Member_info_entity(display_name.getText().toString(),
+                                        display_date.getText().toString(),
+                                        display_gender.getText().toString()
+                                        , Integer.parseInt(display_age.getText().toString())
+                                        , display_occupation.getText().toString()
+                                        , display_phone.getText().toString()
+                                        , Boolean.toString(display_aadhar.isChecked())
+                                        , Boolean.toString(display_driving.isChecked()), Boolean.toString(display_birth.isChecked())
+                                        , Boolean.toString(display_marriage.isChecked()), Boolean.toString(display_ayushman.isChecked())
+                                        , Boolean.toString(display_bank.isChecked())
+                                        , display_student_name.getText().toString()
+                                        , display_student_usn.getText().toString()
+                                        , 1);
                             }
+                            else
+                            {
+                                member = new Member_info_entity(display_name.getText().toString(),
+                                        display_date.getText().toString(),
+                                        display_gender.getText().toString()
+                                        , Integer.parseInt(display_age.getText().toString())
+                                        , display_occupation.getText().toString()
+                                        , display_phone.getText().toString()
+                                        , Boolean.toString(display_aadhar.isChecked())
+                                        , Boolean.toString(display_driving.isChecked()), Boolean.toString(display_birth.isChecked())
+                                        , Boolean.toString(display_marriage.isChecked()), Boolean.toString(display_ayushman.isChecked())
+                                        , Boolean.toString(display_bank.isChecked())
+                                        , display_student_name.getText().toString()
+                                        , display_student_usn.getText().toString()
+                                        , mydb.getStudentCount(uid));
+                            }
+
+
+
+                                if (mydb.updateMember(Value, member)) {
+                                    Toast.makeText(getApplicationContext(), "Updated Successfully",
+                                            Toast.LENGTH_SHORT).show();
+                                    Log.d("SUccessful update", "true");
+                                    Intent intent = new Intent(DisplayMember.this, Home.class);
+                                    startActivity(intent);
+                                    finish();
+                                } else {
+
+                                    Log.d("Unsuccessful update", "false");
+                                }
+
+
 
                         }
 
@@ -290,8 +378,7 @@ public class DisplayMember extends AppCompatActivity {
 
     }
 
-    public void delete(View view)
-    {
+    public void delete(View view) {
         Bundle extras = getIntent().getExtras();
 
         EditButton = (Button) findViewById(R.id.member_edit);
@@ -301,27 +388,27 @@ public class DisplayMember extends AppCompatActivity {
         if (extras != null) {
             Value = extras.getInt("id");
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(this)
-        .setMessage(R.string.deleteMember)
-        .setTitle(R.string.member_delete)
-         .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener(){
-                    public void onClick(DialogInterface dialogInterface, int id) {
-                        int r= mydb.deleteMember(Value);
-                        Log.d("ALERT",Integer.toString(r));
-                        Toast.makeText(getApplicationContext(), "Deleted Successfully",
-                                Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(DisplayMember.this,Home.class);
-                        startActivity(intent);
-                        finish();
+            AlertDialog.Builder builder = new AlertDialog.Builder(this)
+                    .setMessage(R.string.deleteMember)
+                    .setTitle(R.string.member_delete)
+                    .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialogInterface, int id) {
+                            int r = mydb.deleteMember(Value);
+                            Log.d("ALERT", Integer.toString(r));
+                            Toast.makeText(getApplicationContext(), "Deleted Successfully",
+                                    Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(DisplayMember.this, Home.class);
+                            startActivity(intent);
+                            finish();
 
-                    }
-                })
-         .setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        // User cancelled the dialog
+                        }
+                    })
+                    .setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            // User cancelled the dialog
 
-                    }
-                });
+                        }
+                    });
 
             AlertDialog d = builder.create();
 
@@ -330,4 +417,25 @@ public class DisplayMember extends AppCompatActivity {
 
         }
     }
+
+    /*public void takePhotoFunction(View view) {
+        edittakePhoto = (Button) findViewById(R.id.display_member_take_photo);
+        displayPhoto = (ImageView) findViewById(R.id.display_member_photo);
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+
+        }
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        edittakePhoto = (Button) findViewById(R.id.display_member_take_photo);
+        displayPhoto = (ImageView) findViewById(R.id.display_member_photo);
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+            displayPhoto.setImageBitmap(imageBitmap);
+        }
+
+    }*/
 }

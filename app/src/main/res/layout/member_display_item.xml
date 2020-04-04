@@ -48,6 +48,29 @@
                         android:orientation="vertical">
 
                         <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/display_student_name"
+                            android:layout_gravity="center"
+                            android:layout_margin="5sp"
+                            android:hint="Student name"
+                            android:padding="5sp"
+                            android:textColorHint="@android:color/darker_gray"
+                            android:textSize="20dp" />
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/display_student_usn"
+                            android:layout_gravity="center"
+                            android:layout_margin="5sp"
+                            android:hint="Student usn"
+                            android:padding="5sp"
+                            android:textColorHint="@android:color/darker_gray"
+                            android:textSize="20dp" />
+
+
+                        <EditText
                             android:id="@+id/display_member_name"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
